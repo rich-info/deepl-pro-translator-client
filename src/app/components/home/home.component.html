@@ -1,0 +1,56 @@
+<br /><br /><br />
+<div class="row" *ngIf="showTranlatorTitle">
+  <div class="col">
+    <h2>Translator</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col">Translate from
+    <select class="form-control" [(ngModel)]="fromLanguage">
+      <option value="">Auto detect language</option>
+      <option value="DE">German</option>
+      <option value="EN">English</option>
+      <option value="ES">Spanish</option>
+      <option value="FR">French</option>
+      <option value="IT">Italian</option>
+      <option value="NL">Dutch</option>
+      <option value="PL">Polish</option>
+    </select>
+  </div>
+  <div class="col">to
+    <select class="form-control" [(ngModel)]="toLanguage">
+        <option value="DE">German</option>
+        <option value="EN">English</option>
+        <option value="ES">Spanish</option>
+        <option value="FR">French</option>
+        <option value="IT">Italian</option>
+        <option value="NL">Dutch</option>
+        <option value="PL">Polish</option>
+    </select>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md">
+    <textarea class="form-control" rows="5" [(ngModel)]="textToTranslate"></textarea>
+  </div>
+  <div class="col-md">
+    <textarea class="form-control" rows="5" [(ngModel)]="textTranslatedResult"></textarea>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <br />
+    <button class="form-control btn btn-primary" (click)="translate()" *ngIf="!isLoading">Translate</button>
+    <button class="form-control btn btn-danger" disabled="disabled" *ngIf="isLoading"><fa-icon [icon]="['fas', 'spinner']" [spin]="true"></fa-icon> Translating</button>
+  </div>
+</div>
+<div class="row" *ngIf="noData">
+  <div class="col">
+    No data found
+  </div>
+</div>
+<div class="row" *ngIf="error">
+  <div class="col">
+    Error loading data
+  </div>
+</div>
