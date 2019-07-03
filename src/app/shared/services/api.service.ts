@@ -38,7 +38,7 @@ export class ApiService {
             sourceLangString = "&source_lang=" + fromLanguage;
         }
 
-        return this.http.get(this.endpoint + "auth_key=" + this.authKey +
+        return this.http.get(this.endpoint + "?auth_key=" + this.authKey +
             "&text=" + text + sourceLangString + "&target_lang=" + targetLanguage).pipe(
                 map(this.extractData));
     }

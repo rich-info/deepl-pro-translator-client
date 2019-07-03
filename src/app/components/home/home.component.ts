@@ -32,13 +32,26 @@ export class HomeComponent {
       this.toLanguage).subscribe((data: any) => {
         console.log(data);
         this.isLoading = false;
-        this.textTranslatedResult = data;
+        if (data && data.translations && data.translations.length > 0) {
+          this.textTranslatedResult = data.translations[0].text;
+          this.noData = false;
+        } else {
+          this.textTranslatedResult = "";
+          this.noData = true;
+        }
+        this.error = "";
       }, (error) => {
         console.log(error);
         this.isLoading = false;
-        this.textTranslatedResult = error;
+        this.textTranslatedResult = "";
+        this.error = error;
+        this.noData = false;
       });
 
+  }
+
+  close() {
+    this.error = "";
   }
 
 }

@@ -19,13 +19,13 @@
   </div>
   <div class="col">to
     <select class="form-control" [(ngModel)]="toLanguage">
-        <option value="DE">German</option>
-        <option value="EN">English</option>
-        <option value="ES">Spanish</option>
-        <option value="FR">French</option>
-        <option value="IT">Italian</option>
-        <option value="NL">Dutch</option>
-        <option value="PL">Polish</option>
+      <option value="DE">German</option>
+      <option value="EN">English</option>
+      <option value="ES">Spanish</option>
+      <option value="FR">French</option>
+      <option value="IT">Italian</option>
+      <option value="NL">Dutch</option>
+      <option value="PL">Polish</option>
     </select>
   </div>
 </div>
@@ -37,20 +37,31 @@
     <textarea class="form-control" rows="5" [(ngModel)]="textTranslatedResult"></textarea>
   </div>
 </div>
-<div class="row">
-  <div class="col">
-    <br />
-    <button class="form-control btn btn-primary" (click)="translate()" *ngIf="!isLoading">Translate</button>
-    <button class="form-control btn btn-danger" disabled="disabled" *ngIf="isLoading"><fa-icon [icon]="['fas', 'spinner']" [spin]="true"></fa-icon> Translating</button>
-  </div>
-</div>
 <div class="row" *ngIf="noData">
   <div class="col">
-    No data found
+    <br />
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      No data found.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
   </div>
 </div>
 <div class="row" *ngIf="error">
   <div class="col">
-    Error loading data
+    <br />
+    <ngb-alert type="danger" (close)="close()">
+        Error loading translations data. {{ error.message }}
+    </ngb-alert>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <br />
+    <button class="form-control btn btn-primary" (click)="translate()" *ngIf="!isLoading">Translate</button>
+    <button class="form-control btn btn-danger" disabled="disabled" *ngIf="isLoading">
+      <fa-icon [icon]="['fas', 'spinner']" [spin]="true"></fa-icon> Translating
+    </button>
   </div>
 </div>
