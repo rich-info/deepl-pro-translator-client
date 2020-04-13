@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { ApiService } from '../../shared/services/api.service';
 
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -19,6 +21,7 @@ export class HomeComponent {
   textToTranslate: string = "";
   textTranslatedResult: string = "";
 
+  faSpinner = faSpinner;
 
   constructor(
     private apiService: ApiService

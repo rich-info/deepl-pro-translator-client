@@ -61,7 +61,7 @@
     <br />
     <button class="form-control btn btn-primary" (click)="translate()" *ngIf="!isLoading">Translate</button>
     <button class="form-control btn btn-danger" disabled="disabled" *ngIf="isLoading">
-      <fa-icon [icon]="['fas', 'spinner']" [spin]="true"></fa-icon> Translating
+      <fa-icon [icon]="faSpinner" [spin]="true"></fa-icon> Translating
     </button>
   </div>
 </div>
